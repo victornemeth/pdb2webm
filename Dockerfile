@@ -2,6 +2,7 @@ FROM node:18-slim
 
 # Install necessary packages for puppeteer
 RUN apt-get update && apt-get install -y \
+    ffmpeg \
     wget \
     ca-certificates \
     fonts-liberation \

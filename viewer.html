@@ -7,15 +7,25 @@
 </head>
 <body style="margin:0;">
   <div id="viewer" style="width:500px; height:500px;"></div>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const pdbData = decodeURIComponent(urlParams.get("pdb"));
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const pdbData = decodeURIComponent(urlParams.get("pdb"));
+  const viewer = $3Dmol.createViewer("viewer");
 
-    const viewer = $3Dmol.createViewer("viewer");
-    viewer.addModel(pdbData, "pdb");
-    viewer.setStyle({}, { cartoon: { color: "spectrum" } });
-    viewer.zoomTo();
+  viewer.addModel(pdbData, "pdb");
+  viewer.setStyle({}, { cartoon: { color: "spectrum" } });
+  viewer.zoomTo();
+  viewer.zoom(1.2);
+  viewer.render();
+
+  // Allow rotation by angle
+  window.rotateY = function(angle) {
+    viewer.rotate(angle, "y");
     viewer.render();
-  </script>
+  };
+
+  window.viewerReady = true; // Flag Puppeteer can wait for
+</script>
+
 </body>
 </html>
