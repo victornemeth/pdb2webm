@@ -9,3 +9,4 @@ docker build -t pdb2webm .
 docker run --rm   -v "$PWD/pdbs:/data/pdbs"   -v "$PWD/output:/data/output"   pdb2webm
 ```
 
+Takes arround 40 seconds per pdb
